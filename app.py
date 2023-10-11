@@ -1,8 +1,7 @@
 import pandas as pd
-
+from api_handler import BMEApiHandler
 
 def handler(event, context):
-    df = pd.DataFrame([1, 2, 3, 3])
-    print(df)
-    print(df*3)
-    return 'Hola MIAX 11'
+    apih = BMEApiHandler()
+    df_san = apih.get_close_data('SAN')
+    print(df_san)
