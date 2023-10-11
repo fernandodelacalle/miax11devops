@@ -2,3 +2,5 @@ pandas
 flake8
 pytest
 requests
+fsspec
+s3fs
