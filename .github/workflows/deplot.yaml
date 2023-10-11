@@ -6,8 +6,9 @@ on:
     - main
 
 env:
-  AWS_REGION: eu-west-3                   # set this to your preferred AWS region, e.g. us-west-1
-  ECR_REPOSITORY: lambdamiax11           # set this to your Amazon ECR repository name
+  AWS_REGION: eu-west-3
+  ECR_REPOSITORY: lambdamiax11
+  LAMBDA_NAME: lambdamiax11
 
 defaults:
   run:
@@ -53,4 +54,4 @@ jobs:
           ECR_REGISTRY: ${{ steps.login-ecr.outputs.registry }}
           IMAGE_TAG: ${{ github.sha }}
         run: |
-          aws lambda update-function-code --region $AWS_REGION --function-name lambdamiax11 --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
+          aws lambda update-function-code --region $AWS_REGION --function-name $LAMBDA_NAME --image-uri $ECR_REGISTRY/$ECR_REPOSITORY:$IMAGE_TAG
